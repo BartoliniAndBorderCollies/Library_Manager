@@ -23,6 +23,19 @@ public class Account {
     @Column
     private String address;
 
+    public Account() {
+    }
+
+    public Account(String firstName, String secondName, String lastName, int pesel, int phoneNumber, String email, String address) {
+        this.firstName = firstName;
+        this.secondName = secondName;
+        this.lastName = lastName;
+        this.pesel = pesel;
+        this.phoneNumber = phoneNumber;
+        this.email = email;
+        this.address = address;
+    }
+
     public Long getId() {
         return id;
     }
