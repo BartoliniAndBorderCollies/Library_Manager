@@ -3,17 +3,26 @@ package org.example;
 import org.example.command.CreateAccount;
 import org.example.command.MenuCommand;
 import org.example.controller.AccountController;
+import org.example.controller.MenuController;
 import org.example.database.AccountRepository;
-import org.example.entity.Account;
 import org.example.service.AccountService;
+import org.example.view.View;
 
 public class Main {
 
     public static void main(String[] args) {
-        Account account = new Account();
-        AccountRepository accountRepository = new AccountRepository(account);
+
+        AccountRepository accountRepository = new AccountRepository();
         AccountService accountService = new AccountService(accountRepository);
-        AccountController accountController = new AccountController(accountService);
+        View view = new View();
+
+        AccountController accountController = new AccountController(accountService, view);
+        CreateAccount createAccount = new CreateAccount(accountController);
+        MenuController menuController = new MenuController(view, createAccount);
+
+        menuController.run();
+
+
 
         MenuCommand[] menuCommands = {
 

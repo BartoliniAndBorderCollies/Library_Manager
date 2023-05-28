@@ -1,5 +1,6 @@
 package org.example.service;
 import org.example.database.AccountRepository;
+import org.example.entity.Account;
 
 public class AccountService {
 
@@ -9,7 +10,8 @@ public class AccountService {
         this.accountRepository = accountRepository;
     }
 
-    public void create() {
-        accountRepository.create();
+    public Account create(Account account) {
+        accountRepository.create(account);
+        return account;
     }
 }
